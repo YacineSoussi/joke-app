@@ -17,3 +17,17 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build-test
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.APP_HEROKU}}
+          heroku_app_name: "ci-cd-yacine" #Must be unique in Heroku
+          heroku_email: "yacine1.soussi@gmail.com"
