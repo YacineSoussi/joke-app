@@ -43,7 +43,7 @@ workflows:
                 - circleci
 
       - heroku/deploy-via-git:
-          app-name: joke-api-iw2
+          app-name: ci-cd-yacine
           requires:
             - "node/test"
             - "node/run"
@@ -60,4 +60,3 @@ workflows:
             branches:
               only:
                 - circleci
-                
